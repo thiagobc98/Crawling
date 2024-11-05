@@ -16,6 +16,8 @@ dotenv.load_dotenv()
 CODE_SHEETS_VALIDAR_CNAB = os.getenv("CODE_SHEETS_VALIDAR_CNAB")
 DADOS_SISTEMA_COMISSAO = 'Dados_sistema- Comissão'
 DADOS_SISTEMA_DESPESAS = 'Dados_sistema- Despesas'
+UPESTATE_SISTEMA_USER = os.getenv("UPESTATE_SISTEMA_USER")
+UPESTATE_SISTEMA_PASS = os.getenv("UPESTATE_SISTEMA_PASS")
 sheet = Sheets(CODE_SHEETS_VALIDAR_CNAB)
 
 def insert_date(driver, xpath, date_value):
@@ -57,9 +59,9 @@ def login_super(driver):
     driver.get("https://app.upestate.com.br/login/restrito")
 
     print('Fazendo login...')
-    insert_key(driver, '//*[@id="user"]', 'thiago.berberich@upestate.com.br') 
+    insert_key(driver, '//*[@id="user"]', UPESTATE_SISTEMA_USER) 
     sleep(2)
-    insert_key(driver, '//*[@id="password"]', '23ThiagoUp10') 
+    insert_key(driver, '//*[@id="password"]', UPESTATE_SISTEMA_PASS) 
     sleep(2)
     click(driver, '//*[@id="login"]/div[5]/div/button')
     sleep(2)
